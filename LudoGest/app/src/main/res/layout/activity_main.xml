@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dominpc.ludogest.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_light"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/Logo"
+            android:layout_width="match_parent"
+            android:layout_height="215dp"
+            android:background="@android:color/holo_orange_light"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Misapuestas_button"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_bright"
+                android:text="Mis apuestas" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Consultarbeneficios_button"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_bright"
+                android:text="Consultar benficios" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Añadirapuesta_button"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_bright"
+                android:text="Añadir apuesta" />
+        </LinearLayout>
+    </LinearLayout>
+</android.widget.LinearLayout>
