@@ -28,9 +28,12 @@
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
-                android:layout_height="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/holo_blue_light"
                 android:text="Mis apuestas" />
         </LinearLayout>
 
@@ -43,9 +46,12 @@
             <Button
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
-                android:layout_height="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/holo_blue_light"
                 android:text="Consultar benficios" />
         </LinearLayout>
 
@@ -58,9 +64,12 @@
             <Button
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
-                android:layout_height="55dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/holo_blue_light"
                 android:text="Añadir apuesta" />
         </LinearLayout>
     </LinearLayout>
