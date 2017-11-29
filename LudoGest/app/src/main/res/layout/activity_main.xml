@@ -20,7 +20,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/Logo_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -28,13 +28,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Misapuestas_button"
+            android:id="@+id/Misapuestas_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/Misapuestas_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -42,17 +42,19 @@
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_light"
-                android:text="Mis apuestas" />
+                android:text="Mis apuestas"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Consultarbeneficios_button"
+            android:id="@+id/Consultarbeneficios_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/Consultarbeneficios_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -60,17 +62,19 @@
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_light"
-                android:text="Consultar benficios" />
+                android:text="Consultar benficios"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Añadirapuesta_button"
+            android:id="@+id/Añadirapuesta_layout"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/Añadirapuesta_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -78,7 +82,9 @@
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_light"
-                android:text="Añadir apuesta" />
+                android:text="Añadir apuesta"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/background_light" />
         </LinearLayout>
     </LinearLayout>
 </android.widget.LinearLayout>
