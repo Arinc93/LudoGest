@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/holo_orange_light"
-        android:orientation="vertical">
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/Logo"
