@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LudoGest</string>
+    <string name="title_activity_mis_apuestas">misApuestasActivity</string>
 </resources>

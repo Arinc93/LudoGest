@@ -45,6 +45,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_light"
                 android:text="Mis apuestas"
+                android:onClick="goToMisApuestas"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/background_light" />
         </LinearLayout>
