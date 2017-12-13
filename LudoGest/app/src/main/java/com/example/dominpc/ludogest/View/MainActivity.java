@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void goToMisApuestas(View view) {
-        Intent intent = new Intent(MainActivity.this, misApuestasActivity.class);
+        Intent intent = new Intent(MainActivity.this, apuestaDetallada.class);
         MainActivity.this.startActivity(intent);
     }
 
@@ -80,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ApuestaAdd.class);
         MainActivity.this.startActivity(intent);
     }
+    public void goToBeneficios(View view) {
+        Intent intent = new Intent(MainActivity.this, showBeneficios.class);
+        MainActivity.this.startActivity(intent);
+    }
+
+
 
 }
 

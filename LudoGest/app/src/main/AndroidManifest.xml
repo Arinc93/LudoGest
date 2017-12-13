@@ -22,7 +22,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.ApuestaAdd" />
         <activity android:name=".View.apuestasShowAll" />
-        <activity android:name=".View.apuestaDetallada"></activity>
+        <activity android:name=".View.apuestaDetallada" />
+        <activity android:name=".View.showBeneficios"></activity>
     </application>
 
 </manifest>
