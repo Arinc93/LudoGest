@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dominpc.ludogest.MainActivity">
+    tools:context="com.example.dominpc.ludogest.View.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,6 +85,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_light"
+                android:onClick="goToAddApuesta"
                 android:text="Añadir apuesta"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/background_light" />

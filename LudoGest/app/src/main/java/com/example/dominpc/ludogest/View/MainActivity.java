@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         //this.app = (ApuestasApp) this.getApplication();
 
-        Button btAdd = (Button) this.findViewById(R.id.Misapuestas_button);
+        //Button btAdd = (Button) this.findViewById(R.id.Misapuestas_button);
 
 
        /* this.list = app.getListaApuestas();
@@ -64,11 +64,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
     }
-    public void goToMisApuestas() {
+
+    /*public void goToMisApuestas() {
+        Intent intent = new Intent(MainActivity.this, misApuestasActivity.class);
+        MainActivity.this.startActivity(intent);
+    }*/
+
+
+    public void goToMisApuestas(View view) {
         Intent intent = new Intent(MainActivity.this, misApuestasActivity.class);
         MainActivity.this.startActivity(intent);
     }
 
+    public void goToAddApuesta(View view) {
+        Intent intent = new Intent(MainActivity.this, ApuestaAdd.class);
+        MainActivity.this.startActivity(intent);
+    }
 
 }
 
