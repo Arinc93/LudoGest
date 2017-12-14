@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.dominpc.ludogest.Core.Apuesta;
+import com.example.dominpc.ludogest.Core.DBManager;
 import com.example.dominpc.ludogest.R;
 
 import com.example.dominpc.ludogest.Core.Apuesta;
@@ -27,7 +28,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<Apuesta> list;
     private ArrayAdapter<Apuesta> listAdapter;
-   private LudoApp app;
+   private DBManager app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_ludogest);*/
 
-       // this.app = (LudoApp) this.getApplication();
 
         //Button btAdd = (Button) this.findViewById(R.id.Misapuestas_button);
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void goToMisApuestas(View view) {
-        Intent intent = new Intent(MainActivity.this, apuestaDetallada.class);
+        Intent intent = new Intent(MainActivity.this, apuestasShowAll.class);
         MainActivity.this.startActivity(intent);
     }
 
