@@ -28,7 +28,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<Apuesta> list;
     private ArrayAdapter<Apuesta> listAdapter;
-   private DBManager DBmgr;
+    DBManager DBmgr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
+        this.DBmgr = new DBManager( this.getApplicationContext() );
 
 
     }
@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToAddApuesta(View view) {
+        insertaPrueba();
+        eliminaPrueba();
         Intent intent = new Intent(MainActivity.this, ApuestaAdd.class);
         MainActivity.this.startActivity(intent);
     }
@@ -57,8 +59,22 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(intent);
     }
 
+    public void insertaPrueba(){
+        String even ="hue";
+        String pron="hue";
+        double imp=0;
+        double cuo =0;
+        int result = 0;
 
 
+        DBmgr.add(even,pron,imp,cuo,result);
+    }
+
+
+    public void eliminaPrueba(){
+        DBmgr.elimina(2);
+
+    }
 }
 
 

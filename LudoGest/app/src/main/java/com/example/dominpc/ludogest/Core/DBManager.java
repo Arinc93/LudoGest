@@ -61,7 +61,7 @@ public class DBManager extends SQLiteOpenHelper {
 
 
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLA_APUESTAS + "("
-                    + APUESTA_ID + " int PRIMARY KEY AUTOINCREMENT NOT NULL, "
+                    + APUESTA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                     + APUESTA_EVENTO + " string(255) NOT NULL,"
                     + APUESTA_PRONOSTICO + " string(255) NOT NULL,"
                     + APUESTA_IMPORTE + " real NOT NULL, "
@@ -120,7 +120,7 @@ public class DBManager extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                Apuesta apu = new Apuesta(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4), cursor.getDouble(5), cursor.getInt(6));
+                Apuesta apu = new Apuesta(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4), cursor.getInt(5));
                 this.apuestas.add(apu);
             } while (cursor.moveToNext());
             cursor.close();
@@ -156,11 +156,16 @@ public class DBManager extends SQLiteOpenHelper {
         values.put(APUESTA_RESULTADO, result);
 
         try {
+            System.out.println("Antes de insertar");
             db.beginTransaction();
-            cursor = db.query();
+
+            db.insert( TABLA_APUESTAS, null, values );
 
 
-
+            db.setTransactionSuccessful();
+            System.out.println("Despues de insertar");
+        }catch(SQLException exc) {
+            Log.e( "dbAdd", exc.getMessage() );
         } finally {
             if (cursor != null) {
                 cursor.close();
@@ -171,6 +176,46 @@ public class DBManager extends SQLiteOpenHelper {
 
         }
 
+    }
+
+
+    public void elimina( int id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println("Antes de eliminar");
+        try{
+            db.beginTransaction();
+            db.delete( TABLA_APUESTAS,  APUESTA_ID + " =?", new  String[] {toString().valueOf(id)} );
+            db.setTransactionSuccessful();
+            System.out.println("Despues de eliminar");
+        }catch(SQLException exc) {
+            Log.e("dbElimina", exc.getMessage() );
+
+        }
+        finally{
+            db.endTransaction();
+        }
+    }
+    public Cursor searchFor(String text)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor toret = null;
+
+        try{
+            toret= db.query(TABLA_APUESTAS,null, APUESTA_ID + "LIKE ?", new String[] { text}, null,null,null);
+        }
+        catch(SQLException exc){
+            Log.e("DBManager.searchFor", exc.getMessage());
+        }
+        return toret;
+    }
+
+
+    public Cursor getAllApuestas()
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        return db.query( DBManager.TABLA_APUESTAS, null, null, null, null, null, null);
     }
 
 
