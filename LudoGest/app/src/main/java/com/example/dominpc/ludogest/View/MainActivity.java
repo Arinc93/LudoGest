@@ -28,47 +28,19 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<Apuesta> list;
     private ArrayAdapter<Apuesta> listAdapter;
-   private DBManager app;
+   private DBManager DBmgr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Colocar icono en la Action Bar
-        /*ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.mipmap.ic_ludogest);*/
 
 
-        //Button btAdd = (Button) this.findViewById(R.id.Misapuestas_button);
 
 
-       /* this.list = app.getListaApuestas();
-        this.listAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_selectable_list_item,
-                this.list
-        );*/
-
-
-        //listApuestas.setAdapter(this.listAdapter);
-
-        //Al hacer clic en la serie pasamos al activity donde se gestionan las temporadas.
-       /* btAdd.setOnClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this,misApuestasActivity.class);
-                MainActivity.this.startActivity(intent);
-
-            }
-        });*/
     }
 
-    /*public void goToMisApuestas() {
-        Intent intent = new Intent(MainActivity.this, misApuestasActivity.class);
-        MainActivity.this.startActivity(intent);
-    }*/
 
 
     public void goToMisApuestas(View view) {

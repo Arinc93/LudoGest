@@ -35,7 +35,7 @@ public class DBManager extends SQLiteOpenHelper {
     private List<Apuesta> apuestas ;
     public static final String TABLA_APUESTAS = "apuestas";
 
-    /*
+
     public static final String APUESTA_ID = "_id";
     public static final String APUESTA_EVENTO = "evento";
     public static final String APUESTA_PRONOSTICO = "pronostico";
@@ -43,7 +43,7 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String APUESTA_CUOTA = "cuota";
     public static final String APUESTA_GANANCIA = "ganancia";
     public static final String APUESTA_RESULTADO = "resultado";
-*/
+
 
     public DBManager(Context context) {
         super(context, DB_NOMBRE, null, DB_VERSION);
@@ -58,24 +58,24 @@ public class DBManager extends SQLiteOpenHelper {
             db.beginTransaction();
 
 
-          /*  db.execSQL( "CREATE TABLE IF NOT EXISTS " +TABLA_APUESTAS + "("
+            db.execSQL( "CREATE TABLE IF NOT EXISTS " +TABLA_APUESTAS + "("
                     + APUESTA_ID + " int PRIMARY KEY AUTOINCREMENT NOT NULL, "
                     + APUESTA_EVENTO + " string(255) NOT NULL,"
-                    + APUESTA_PRONOSTICO + "string(255) NOT NULL,"
-                    + APUESTA_IMPORTE + "real NOT NULL, "
-                    + APUESTA_CUOTA + "real NOT NULL,"
-                    + APUESTA_GANANCIA + "real NOT NULL"
-                    + APUESTA_RESULTADO+ "int NOT NULL )");*/
+                    + APUESTA_PRONOSTICO + " string(255) NOT NULL,"
+                    + APUESTA_IMPORTE + " real NOT NULL, "
+                    + APUESTA_CUOTA + " real NOT NULL,"
+                    + APUESTA_GANANCIA + " real NOT NULL,"
+                    + APUESTA_RESULTADO+ " int NOT NULL )");
 
 
-          db.execSQL( "CREATE TABLE IF NOT EXISTS apuestas( "
+         /* db.execSQL( "CREATE TABLE IF NOT EXISTS apuestas( "
                     + "id int PRIMARY KEY AUTOINCREMENT NOT NULL, "
                     + "evento string(255) NOT NULL, "
                     + "pronostico string(255) NOT NULL, "
                     + "importe real NOT NULL, "
                     + "cuota real NOT NULL, "
                     + "ganancia real NOT NULL,"
-                    + "resultado int)");
+                    + "resultado int)");*/
 
             db.setTransactionSuccessful();
         }catch(SQLException exc){
