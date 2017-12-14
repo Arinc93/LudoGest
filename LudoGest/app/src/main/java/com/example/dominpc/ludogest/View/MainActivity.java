@@ -27,7 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<Apuesta> list;
     private ArrayAdapter<Apuesta> listAdapter;
-   // private ApuestasApp app;
+   private LudoApp app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_ludogest);*/
 
-        //this.app = (ApuestasApp) this.getApplication();
+       // this.app = (LudoApp) this.getApplication();
 
         //Button btAdd = (Button) this.findViewById(R.id.Misapuestas_button);
 
