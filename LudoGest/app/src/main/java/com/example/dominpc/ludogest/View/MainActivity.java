@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToAddApuesta(View view) {
-        insertaPrueba();
-        eliminaPrueba();
+
         Intent intent = new Intent(MainActivity.this, ApuestaAdd.class);
         MainActivity.this.startActivity(intent);
     }

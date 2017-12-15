@@ -123,30 +123,8 @@
             android:layout_height="74dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Ganancia"
-                android:textAlignment="center" />
-
-            <EditText
-                android:id="@+id/GananciaTXT"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="74dp"
-            android:orientation="horizontal">
-
             <Button
-                android:id="@+id/ApuestaAddButton"
+                android:id="@+id/ApuAddBt"
                 android:layout_width="338dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="230dp"

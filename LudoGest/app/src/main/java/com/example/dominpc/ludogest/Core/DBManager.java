@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String DB_NOMBRE = "ApuestasDB";
     public static final int DB_VERSION = 1;
 
-    private List<Apuesta> apuestas;
+    private List<Apuesta> apuestas= new ArrayList<>();
     public static final String TABLA_APUESTAS = "apuestas";
     private int numElem;
     private int maxElem = 1000;
@@ -157,10 +158,16 @@ public class DBManager extends SQLiteOpenHelper {
 
         try {
             System.out.println("Antes de insertar");
+            System.out.println(even+"se le paso bien");
+            System.out.println(pron+"se le paso bien");
+
+
+
+
             db.beginTransaction();
 
             db.insert( TABLA_APUESTAS, null, values );
-
+            System.out.println("Antes de acabar transaccion");
 
             db.setTransactionSuccessful();
             System.out.println("Despues de insertar");
