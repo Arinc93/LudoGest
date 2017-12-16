@@ -215,20 +215,24 @@ public class DBManager extends SQLiteOpenHelper {
             db.endTransaction();
         }
     }
-    public Cursor searchFor(int id)
+    public Apuesta searchFor(int id)
     {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor toret = null;
-
+        Apuesta apu= null;
         try{
             toret= db.query(TABLA_APUESTAS,null, APUESTA_ID + "LIKE ?", new  String[] {toString().valueOf(id)}, null,null,null);
-        }
-        catch(SQLException exc){
-            Log.e("DBManager.searchFor", exc.getMessage());
+        }catch(SQLException exc) {
+            Log.e( "DBManager.searchFor", exc.getMessage() );
         }
 
+        if ( toret.moveToFirst() ) {
 
-        return toret;
+                apu = new Apuesta(toret.getInt( 0 ), toret.getString( 1 ),toret.getString( 2),toret.getDouble( 3),toret.getDouble( 4),toret.getInt( 5 ));
+            toret.close();
+        }
+
+        return apu;
     }
 
 
