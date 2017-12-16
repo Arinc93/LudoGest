@@ -9,7 +9,8 @@ import com.example.dominpc.ludogest.Core.DBManager;
 import com.example.dominpc.ludogest.R;
 
 public class apuestasShowAll extends AppCompatActivity {
-
+    SimpleCursorAdapter mainCursorAdapter;
+    DBManager DBMgr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +19,7 @@ public class apuestasShowAll extends AppCompatActivity {
         final ListView listApuestas = this.findViewById( R.id.lvApuestas );
 
         this.registerForContextMenu( listApuestas );
-        DBManager DBMgr = new DBManager( this.getApplicationContext() );
+       DBMgr = new DBManager( this.getApplicationContext() );
 
 
     }
@@ -27,20 +28,22 @@ public class apuestasShowAll extends AppCompatActivity {
         final ListView listApuestas = this.findViewById( R.id.lvApuestas );
 
 
-        SimpleCursorAdapter mainCursorAdapter = new SimpleCursorAdapter( this,
+         mainCursorAdapter = new SimpleCursorAdapter( this,
                 R.layout.lvlistaapuestas,
                 null,
                 new String[]{ DBManager.APUESTA_ID ,DBManager.APUESTA_EVENTO },
                 new int[] { R.id.lvidApuesta, R.id.lveventoApuesta } );
-        listApuestas.setAdapter( mainCursorAdapter );
 
+
+        listApuestas.setAdapter( mainCursorAdapter );
+        this.updateLista();
 
 
 
     }
 
-    private void updateContacts()
+    private void updateLista()
     {
-        this.mainCursorAdapter.changeCursor( this.dbManager.getAllContacts() );
+        mainCursorAdapter.changeCursor( DBMgr.getAllApuestas() );
     }
 }

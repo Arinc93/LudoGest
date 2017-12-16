@@ -58,16 +58,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(intent);
     }
 
-    public void insertaPrueba(){
-        String even ="hue";
-        String pron="hue";
-        double imp=0;
-        double cuo =0;
-        int result = 0;
 
-
-        DBmgr.add(even,pron,imp,cuo,result);
-    }
 
 
     public void eliminaPrueba(){
