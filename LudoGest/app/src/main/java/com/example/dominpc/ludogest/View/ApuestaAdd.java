@@ -63,19 +63,11 @@ public class ApuestaAdd extends AppCompatActivity {
 
         DBmgr.add(even,pron,impor,cuot,result);
 
-        Apuesta ap= getApuesta();
-        System.out.println(ap.toString());
+
     }
 
 
-    public Apuesta getApuesta(){
-      Apuesta apuestaAux;
-        List<Apuesta> lApu=DBmgr.getListaApuestas();
-    int tam=lApu.size() ;
-       apuestaAux=lApu.get(3) ;
-        System.out.println(Integer.toString(tam));
-       return apuestaAux;
-    }
+
 
 
 }

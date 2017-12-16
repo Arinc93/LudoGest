@@ -40,6 +40,7 @@
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/eventoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -60,6 +61,7 @@
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/pronosticoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -80,6 +82,7 @@
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/importeTV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -100,6 +103,7 @@
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/cuotaTV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -120,6 +124,7 @@
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/gananciaTV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

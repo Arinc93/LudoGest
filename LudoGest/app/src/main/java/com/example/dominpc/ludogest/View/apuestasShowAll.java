@@ -1,7 +1,10 @@
 package com.example.dominpc.ludogest.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -20,6 +23,19 @@ public class apuestasShowAll extends AppCompatActivity {
 
         this.registerForContextMenu( listApuestas );
        DBMgr = new DBManager( this.getApplicationContext() );
+
+       listApuestas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+               Intent intent = new Intent(apuestasShowAll.this,apuestaDetallada.class);
+
+               int idDetalle= DBMgr.getIDPosApuesta(i);
+
+               intent.putExtra("id",idDetalle);
+
+               apuestasShowAll.this.startActivity(intent);
+           }
+       });
 
 
     }
@@ -46,4 +62,7 @@ public class apuestasShowAll extends AppCompatActivity {
     {
         mainCursorAdapter.changeCursor( DBMgr.getAllApuestas() );
     }
+
+
+
 }

@@ -108,42 +108,9 @@ public class DBManager extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public List<Apuesta> getListaApuestas() {
-        this.leerBDApuestas();
-        return apuestas;
 
-    }
 
-    private void leerBDApuestas() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        this.apuestas.clear();
-        Cursor cursor = db.rawQuery("SELECT * FROM apuestas ", null);
 
-        if (cursor.moveToFirst()) {
-            do {
-                Apuesta apu = new Apuesta(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4), cursor.getInt(5));
-                this.apuestas.add(apu);
-            } while (cursor.moveToNext());
-            cursor.close();
-        }
-    }
-
-    private void getNumElemBD() {
-        numElem = 0;
-        List<Apuesta> apusAux = getListaApuestas();
-        for (Apuesta apAux : apusAux) {
-            numElem++;
-        }
-    }
-
-    public List<String> listEventos() {
-        List<Apuesta> apuest = getListaApuestas();
-        List<String> events = new LinkedList<>();
-        for (Apuesta apAux : apuest) {
-            events.add(apAux.getEvento());
-        }
-        return events;
-    }
 
 
     public void add(String even, String pron, double imp, double cuo, int result) {
@@ -185,6 +152,24 @@ public class DBManager extends SQLiteOpenHelper {
 
     }
 
+    public int getIDPosApuesta(int posi){
+        int IDpos=0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cur= db.query( DBManager.TABLA_APUESTAS, new  String[]{APUESTA_ID}, null, null, null, null, null);
+        cur.moveToFirst();
+
+        for(int i=0;i<posi;i++){
+          cur.moveToNext();
+
+
+        }
+
+        IDpos=cur.getInt(0);
+        return IDpos;
+
+    }
+
+
         public int getNumApuestas(){
             int numero=0;
                 SQLiteDatabase db = this.getReadableDatabase();
@@ -218,19 +203,21 @@ public class DBManager extends SQLiteOpenHelper {
     public Apuesta searchFor(int id)
     {
         SQLiteDatabase db = this.getReadableDatabase();
+
+        String idStr = ""+id;
         Cursor toret = null;
         Apuesta apu= null;
         try{
-            toret= db.query(TABLA_APUESTAS,null, APUESTA_ID + "LIKE ?", new  String[] {toString().valueOf(id)}, null,null,null);
+            toret= db.query(TABLA_APUESTAS,null, APUESTA_ID + " LIKE ?", new String[]{idStr}, null,null,null);
         }catch(SQLException exc) {
             Log.e( "DBManager.searchFor", exc.getMessage() );
         }
 
-        if ( toret.moveToFirst() ) {
+            toret.moveToFirst();
 
                 apu = new Apuesta(toret.getInt( 0 ), toret.getString( 1 ),toret.getString( 2),toret.getDouble( 3),toret.getDouble( 4),toret.getInt( 5 ));
             toret.close();
-        }
+
 
         return apu;
     }
