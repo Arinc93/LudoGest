@@ -185,6 +185,18 @@ public class DBManager extends SQLiteOpenHelper {
 
     }
 
+        public int getNumApuestas(){
+            int numero=0;
+                SQLiteDatabase db = this.getReadableDatabase();
+                Cursor cur= db.query( DBManager.TABLA_APUESTAS, null, null, null, null, null, null);
+
+            numero=cur.getCount();
+        return numero;
+}
+
+
+
+
 
     public void elimina( int id)
     {
@@ -203,17 +215,19 @@ public class DBManager extends SQLiteOpenHelper {
             db.endTransaction();
         }
     }
-    public Cursor searchFor(String text)
+    public Cursor searchFor(int id)
     {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor toret = null;
 
         try{
-            toret= db.query(TABLA_APUESTAS,null, APUESTA_ID + "LIKE ?", new String[] { text}, null,null,null);
+            toret= db.query(TABLA_APUESTAS,null, APUESTA_ID + "LIKE ?", new  String[] {toString().valueOf(id)}, null,null,null);
         }
         catch(SQLException exc){
             Log.e("DBManager.searchFor", exc.getMessage());
         }
+
+
         return toret;
     }
 
@@ -224,6 +238,8 @@ public class DBManager extends SQLiteOpenHelper {
 
         return db.query( DBManager.TABLA_APUESTAS, null, null, null, null, null, null);
     }
+
+
 
 
 }
