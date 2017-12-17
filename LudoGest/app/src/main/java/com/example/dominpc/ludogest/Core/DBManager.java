@@ -115,7 +115,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public void add(String even, String pron, double imp, double cuo, int result) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = null;
+
         ContentValues values = new ContentValues();
         values.put(APUESTA_EVENTO, even);
         values.put(APUESTA_PRONOSTICO, pron);
@@ -124,29 +124,19 @@ public class DBManager extends SQLiteOpenHelper {
         values.put(APUESTA_RESULTADO, result);
 
         try {
-            System.out.println("Antes de insertar");
-            System.out.println(even+"se le paso bien");
-            System.out.println(pron+"se le paso bien");
-
-
-
 
             db.beginTransaction();
 
             db.insert( TABLA_APUESTAS, null, values );
-            System.out.println("Antes de acabar transaccion");
+
 
             db.setTransactionSuccessful();
-            System.out.println("Despues de insertar");
+
         }catch(SQLException exc) {
             Log.e( "dbAdd", exc.getMessage() );
         } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
 
             db.endTransaction();
-
 
         }
 
@@ -231,6 +221,38 @@ public class DBManager extends SQLiteOpenHelper {
     }
 
 
+
+
+    public void actualizarApuesta(int idU,String even, String pron, double imp, double cuo, int result){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(APUESTA_EVENTO, even);
+        values.put(APUESTA_PRONOSTICO, pron);
+        values.put(APUESTA_IMPORTE, imp);
+        values.put(APUESTA_CUOTA, cuo);
+        values.put(APUESTA_RESULTADO, result);
+
+
+        try{
+            System.out.println("Antes de actualizar");
+            db.beginTransaction();
+            db.update(TABLA_APUESTAS, values,APUESTA_ID +" =?",new  String[] {toString().valueOf(idU)});
+
+            System.out.println("Despues de actualizar");
+
+            db.setTransactionSuccessful();
+        }catch(SQLException exc){
+            Log.e("actualizaApuesta", exc.getMessage() );
+
+        }finally{
+            db.endTransaction();
+        }
+
+
+
+    }
 
 
 }

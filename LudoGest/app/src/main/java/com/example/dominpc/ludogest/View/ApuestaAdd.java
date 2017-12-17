@@ -59,8 +59,6 @@ public class ApuestaAdd extends AppCompatActivity {
         double impor= Double.parseDouble(imp);
         double cuot= Double.parseDouble(cuo);
 
-
-
         DBmgr.add(even,pron,impor,cuot,result);
 
 
