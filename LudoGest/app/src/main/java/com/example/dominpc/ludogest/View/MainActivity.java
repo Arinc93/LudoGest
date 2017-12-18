@@ -42,6 +42,71 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void onPause()
+    {
+        super.onPause();
+
+        this.DBmgr.close();
+
+    }
+
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        super.onCreateOptionsMenu( menu );
+        this.getMenuInflater().inflate( R.menu.menu, menu );
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem)
+    {
+          boolean   toret= false;
+
+
+        switch( menuItem.getItemId() ) {
+            case R.id.misApuestasMenu:
+                System.out.println("antes de hacer intent de apuestas showall");
+                Intent intent = new Intent(MainActivity.this, apuestasShowAll.class);
+                System.out.println("antes de hacer start activity");
+                MainActivity.this.startActivity(intent);
+               toret = true;
+                break;
+
+
+            case R.id.consultarEstadisticasMenu:
+
+                Intent intent2 = new Intent(MainActivity.this, showBeneficios.class);
+
+                MainActivity.this.startActivity(intent2);
+                toret = true;
+                break;
+
+            case R.id.apuAddMenu:
+
+                Intent intent3 = new Intent(MainActivity.this, ApuestaAdd.class);
+
+                MainActivity.this.startActivity(intent3);
+               toret = true;
+                break;
+
+
+
+        }
+
+
+        return toret;
+
+    }
+
+
+
+
 
     public void goToMisApuestas(View view) {
         Intent intent = new Intent(MainActivity.this, apuestasShowAll.class);
@@ -54,8 +119,11 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(intent);
     }
     public void goToBeneficios(View view) {
+
         Intent intent = new Intent(MainActivity.this, showBeneficios.class);
         MainActivity.this.startActivity(intent);
+
+
     }
 
 

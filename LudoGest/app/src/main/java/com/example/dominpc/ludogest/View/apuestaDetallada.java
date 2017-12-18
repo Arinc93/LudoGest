@@ -1,13 +1,18 @@
 package com.example.dominpc.ludogest.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dominpc.ludogest.Core.Apuesta;
 import com.example.dominpc.ludogest.Core.DBManager;
@@ -65,7 +70,7 @@ public class apuestaDetallada extends AppCompatActivity {
         final EditText edresult= this.findViewById(R.id.resultadoApuestaTXT);
 
         edresult.setText(Integer.toString(apuestaShow.getResultado()));
-
+/*
         edresult.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -82,15 +87,23 @@ public class apuestaDetallada extends AppCompatActivity {
                 resultAux = Integer.parseInt(edresult.getText().toString());
                System.out.println("resultaux en el listener"+resultAux);
             }
-        });
+        });*/
 
 
 
         final Button btUpda = this.findViewById( R.id.modificaBT );
         btUpda.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View view) {
-                System.out.println("resultaux antes de actualizar"+resultAux);
+                final EditText edresult= findViewById(R.id.resultadoApuestaTXT);
+                resultAux = Integer.parseInt(edresult.getText().toString());
+
+
+
+
                 apuestaDetallada.this.modificaApuesta(idapu,apuestaShow.getEvento(),apuestaShow.getPronostico(),apuestaShow.getImporte(),apuestaShow.getCuota(),resultAux);
             }
         });
@@ -100,21 +113,102 @@ public class apuestaDetallada extends AppCompatActivity {
 
 
     public void eliminarApuesta(int idSupr){
-     DBMgr.elimina(idSupr);
+        Toast t = Toast.makeText( this,"Apuesta eliminada", Toast.LENGTH_LONG );
+        t.setGravity( Gravity.BOTTOM| Gravity.CENTER, 0, 0 );
+        t.show();
+
+        Intent intent = new Intent(apuestaDetallada.this, apuestasShowAll.class);
+
+        apuestaDetallada.this.startActivity(intent);
+
+
+        DBMgr.elimina(idSupr);
     }
 
 
 
     public void modificaApuesta(int idU,String even, String pron, double imp, double cuo, int result  ){
-        System.out.println("id en la funcion"+idU);
+
+    if(result<0||result>2){
+
+        Toast t = Toast.makeText( this,"Introduce en el resultado:                                                         0 si está pendiente                                                  1 si está acertada                                                   2 si esta  fallida", Toast.LENGTH_LONG );
+        t.setGravity( Gravity.BOTTOM | Gravity.CENTER, 0, 0 );
+        t.show();
 
 
-        System.out.println("resultaux en la funcion"+resultAux);
-       DBMgr.actualizarApuesta(idU,even,pron,imp,cuo,result);
+    }else{
+        DBMgr.actualizarApuesta(idU,even,pron,imp,cuo,result);
 
+
+        Intent intent = new Intent(apuestaDetallada.this, apuestasShowAll.class);
+
+        apuestaDetallada.this.startActivity(intent);
 
     }
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        super.onCreateOptionsMenu( menu );
+        this.getMenuInflater().inflate( R.menu.menu, menu );
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem)
+    {
+        boolean   toret= false;
+
+
+        switch( menuItem.getItemId() ) {
+            case R.id.misApuestasMenu:
+
+                Intent intent = new Intent(apuestaDetallada.this, apuestasShowAll.class);
+
+                apuestaDetallada.this.startActivity(intent);
+                toret = true;
+                break;
+
+
+            case R.id.consultarEstadisticasMenu:
+
+                Intent intent2 = new Intent(apuestaDetallada.this, showBeneficios.class);
+
+                apuestaDetallada.this.startActivity(intent2);
+                toret = true;
+                break;
+
+            case R.id.apuAddMenu:
+
+                Intent intent3 = new Intent(apuestaDetallada.this, ApuestaAdd.class);
+
+                apuestaDetallada.this.startActivity(intent3);
+                toret = true;
+                break;
+
+
+
+        }
+
+        return toret;
+
+    }
+
+
+
+
+
+
+    public void onPause()
+    {
+        super.onPause();
+
+        this.DBMgr.close();
+
+    }
 
 }

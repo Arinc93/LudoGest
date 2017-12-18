@@ -23,7 +23,8 @@
         <activity android:name=".View.ApuestaAdd" />
         <activity android:name=".View.apuestasShowAll" />
         <activity android:name=".View.apuestaDetallada" />
-        <activity android:name=".View.showBeneficios"></activity>
+        <activity android:name=".View.showBeneficios" />
+        <activity android:name=".View.notaActivity"></activity>
     </application>
 
 </manifest>

@@ -24,7 +24,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="Mis Apuestas"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="36sp" />
         </LinearLayout>
 
         <ListView

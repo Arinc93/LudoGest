@@ -3,6 +3,8 @@ package com.example.dominpc.ludogest.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -62,6 +64,68 @@ public class apuestasShowAll extends AppCompatActivity {
     {
         mainCursorAdapter.changeCursor( DBMgr.getAllApuestas() );
     }
+
+    public void onPause()
+    {
+        super.onPause();
+
+        DBMgr.close();
+        this.mainCursorAdapter.getCursor().close();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        super.onCreateOptionsMenu( menu );
+        this.getMenuInflater().inflate( R.menu.menu, menu );
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem)
+    {
+        boolean   toret= false;
+
+
+        switch( menuItem.getItemId() ) {
+            case R.id.misApuestasMenu:
+
+                Intent intent = new Intent(apuestasShowAll.this, apuestasShowAll.class);
+
+                apuestasShowAll.this.startActivity(intent);
+                toret = true;
+                break;
+
+
+            case R.id.consultarEstadisticasMenu:
+
+                Intent intent2 = new Intent(apuestasShowAll.this, showBeneficios.class);
+
+                apuestasShowAll.this.startActivity(intent2);
+                toret = true;
+                break;
+
+            case R.id.apuAddMenu:
+
+                Intent intent3 = new Intent(apuestasShowAll.this, ApuestaAdd.class);
+
+                apuestasShowAll.this.startActivity(intent3);
+                toret = true;
+                break;
+
+
+
+        }
+
+        return toret;
+
+    }
+
+
+
+
 
 
 

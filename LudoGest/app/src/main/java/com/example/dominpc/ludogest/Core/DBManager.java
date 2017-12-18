@@ -176,12 +176,12 @@ public class DBManager extends SQLiteOpenHelper {
     public void elimina( int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        System.out.println("Antes de eliminar");
+
         try{
             db.beginTransaction();
             db.delete( TABLA_APUESTAS,  APUESTA_ID + " =?", new  String[] {toString().valueOf(id)} );
             db.setTransactionSuccessful();
-            System.out.println("Despues de eliminar");
+
         }catch(SQLException exc) {
             Log.e("dbElimina", exc.getMessage() );
 
@@ -236,11 +236,11 @@ public class DBManager extends SQLiteOpenHelper {
 
 
         try{
-            System.out.println("Antes de actualizar");
+
             db.beginTransaction();
             db.update(TABLA_APUESTAS, values,APUESTA_ID +" =?",new  String[] {toString().valueOf(idU)});
 
-            System.out.println("Despues de actualizar");
+
 
             db.setTransactionSuccessful();
         }catch(SQLException exc){
@@ -254,5 +254,114 @@ public class DBManager extends SQLiteOpenHelper {
 
     }
 
+    public Double consultarApuestaTotal() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Double resultado = 0.000;
+        Cursor curs;
+        try{
+
+             curs = db.query(DBManager.TABLA_APUESTAS,  new  String[]{APUESTA_IMPORTE},APUESTA_IMPORTE , null, null, null, null, null);
+            curs.moveToFirst();
+
+         for(int i =0; i<curs.getCount();i++){
+             resultado = resultado+curs.getDouble(0);
+             curs.moveToNext();
+
+
+         }
+
+            curs.close();
+        }catch(SQLException exc) {
+            Log.e( "DBManager.searchFor", exc.getMessage() );
+        }
+
+return resultado;
+
+    }
+
+
+
+
+
+
+    public double getGanancias(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Double importes = 0.000;
+        Double cuotas = 1.000;
+        Double gananciasFinal = 0.000;
+
+        try{
+
+            Cursor cursImportes= db.query(DBManager.TABLA_APUESTAS,  new  String[]{APUESTA_IMPORTE},APUESTA_RESULTADO + " LIKE ?", new  String[] {"1"}, null, null, null, null);
+            cursImportes.moveToFirst();
+            Cursor cursCuotas= db.query(DBManager.TABLA_APUESTAS,  new  String[]{APUESTA_CUOTA},APUESTA_RESULTADO + " LIKE ?", new  String[] {"1"}, null, null, null, null);
+            cursCuotas.moveToFirst();
+
+
+            for(int i =0; i<cursImportes.getCount();i++){
+                importes = cursImportes.getDouble(0);
+                cursImportes.moveToNext();
+                cuotas = cursCuotas.getDouble(0);
+                cursCuotas.moveToNext();
+                gananciasFinal=gananciasFinal+importes*cuotas;
+
+            }
+
+
+
+        }catch(SQLException exc) {
+            Log.e( "DBManager.searchFor", exc.getMessage() );
+        }
+
+        return gananciasFinal;
+    }
+
+public double getPerdidas(){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Double perdidasFinal = 0.00;
+    try{
+
+        Cursor cursImportes= db.query(DBManager.TABLA_APUESTAS,  new  String[]{APUESTA_IMPORTE},APUESTA_RESULTADO + " LIKE ?", new  String[] {"2"}, null, null, null, null);
+        cursImportes.moveToFirst();
+
+        for(int i =0; i<cursImportes.getCount();i++){
+            perdidasFinal = perdidasFinal+cursImportes.getDouble(0);
+            cursImportes.moveToNext();
+
+        }
+
+    }catch(SQLException exc) {
+        Log.e( "DBManager.searchFor", exc.getMessage() );
+    }
+
+return perdidasFinal;
 
 }
+
+public double getBeneficios(){
+    double beneficiosFinal=0.00;
+
+
+    beneficiosFinal= getGanancias() -  getPerdidas();
+
+
+
+    return beneficiosFinal;
+
+}
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+

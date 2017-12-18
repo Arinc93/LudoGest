@@ -25,8 +25,8 @@
                 android:layout_weight="1"
                 android:text="Añadir Apuesta"
                 android:textAlignment="center"
-                android:textSize="36sp"
-                android:textStyle="bold" />
+                android:textColor="@android:color/background_light"
+                android:textSize="36sp" />
 
         </LinearLayout>
 
@@ -41,7 +41,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Evento"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/EventoTXT"
@@ -63,7 +64,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Pronostico"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/PronosticoTXT"
@@ -85,7 +87,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Importe"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/ImporteTXT"
@@ -107,7 +110,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Cuota"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
 
             <EditText
                 android:id="@+id/CuotaTXT"
